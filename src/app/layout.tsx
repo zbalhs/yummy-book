@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
 
@@ -9,8 +9,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
   display: "swap",
 });
@@ -45,7 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
       <head>
         {/* Prevent FOUC for dark mode */}
         <script

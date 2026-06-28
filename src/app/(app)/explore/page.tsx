@@ -123,7 +123,7 @@ function ExploreContent() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={t.nav.search}
-                className="input pl-11 py-3 text-sm"
+                className="input !pl-11 !py-3 text-sm"
               />
             </form>
             <button

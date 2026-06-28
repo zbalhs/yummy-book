@@ -112,7 +112,7 @@ export default function Navbar() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.nav.search}
-                className="input pl-10 pr-4 py-2 text-sm bg-[var(--color-surface-alt)]"
+                className="input !pl-10 !pr-4 !py-2 text-sm bg-[var(--color-surface-alt)]"
               />
             </form>
 
@@ -185,7 +185,7 @@ export default function Navbar() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.nav.search}
-                className="input pl-10 py-2.5 text-sm"
+                className="input !pl-10 !py-2.5 text-sm"
               />
             </form>
 

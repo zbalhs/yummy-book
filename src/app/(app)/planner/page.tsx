@@ -296,7 +296,7 @@ export default function PlannerPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.nav.search}
-                className="input pl-10 py-2.5 text-sm"
+                className="input !pl-10 !py-2.5 text-sm"
                 autoFocus
               />
             </form>

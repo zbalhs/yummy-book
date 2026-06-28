@@ -10,65 +10,65 @@
 
 @theme inline {
   /* Typography */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'Playfair Display', Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-display: var(--font-outfit), system-ui, sans-serif;
 
-  /* Shopify Inspired - Aloe/Mint & Mono Palette */
-  --color-primary-50: #f0fdf4;
-  --color-primary-100: #dcfce7;
-  --color-primary-200: #c1fbd4; /* Aloe-10 */
-  --color-primary-300: #d4f9e0; /* Pistachio-10 */
-  --color-primary-400: #34d399;
-  --color-primary-500: #10b981; /* Mint green */
-  --color-primary-600: #059669;
-  --color-primary-700: #047857;
-  --color-primary-800: #065f46;
-  --color-primary-900: #064e3b;
+  /* Spiced Oatmeal & Sage Green Palette */
+  --color-primary-50: #fef6f2;
+  --color-primary-100: #fde8dd;
+  --color-primary-200: #fbcbb5;
+  --color-primary-300: #f8a383;
+  --color-primary-400: #f27351;
+  --color-primary-500: #e2583e; /* Appetizing Spiced Terracotta/Persimmon */
+  --color-primary-600: #c8422a;
+  --color-primary-700: #a6311c;
+  --color-primary-800: #882b1b;
+  --color-primary-900: #71271a;
 
-  --color-accent-50: #fbfbf5;  /* Canvas cream */
-  --color-accent-100: #f5f5f0;
-  --color-accent-200: #e4e4e7;
-  --color-accent-500: #00f5ff; /* Cyan accent */
-  --color-accent-600: #00d8e2;
+  --color-accent-50: #faf6f0;  /* Oatmeal Alabaster */
+  --color-accent-100: #f5ede3; /* Warm Sand */
+  --color-accent-200: #eae3d9; /* Hairline beige */
+  --color-accent-500: #8ca18d; /* Sage Green */
+  --color-accent-600: #738774;
 
-  --color-warm-50: #fbfbf5;
-  --color-warm-100: #d4f9e0;
-  --color-warm-200: #c1fbd4;
-  --color-warm-300: #10b981;
+  --color-warm-50: #faf6f0;
+  --color-warm-100: #faf6f0;
+  --color-warm-200: #f5ede3;
+  --color-warm-300: #e2583e;
 
-  --color-cream-50: #fbfbf5;
-  --color-cream-100: #f4f4f0;
-  --color-cream-200: #e4e4e7;
-  --color-cream-300: #d4d4d8;
+  --color-cream-50: #faf6f0;
+  --color-cream-100: #f5ede3;
+  --color-cream-200: #eae3d9;
+  --color-cream-300: #9e978c;
 
-  --color-sage-50: #fbfbf5;
-  --color-sage-100: #e8ebe3;
-  --color-sage-200: #d4daca;
-  --color-sage-300: #b5c0a8;
-  --color-sage-400: #96a680;
-  --color-sage-500: #7a8d64;
-  --color-sage-600: #60714e;
-  --color-sage-700: #4c5a3f;
-  --color-sage-800: #3f4a35;
-  --color-sage-900: #363f2f;
+  --color-sage-50: #faf6f0;
+  --color-sage-100: #f5ede3;
+  --color-sage-200: #eae3d9;
+  --color-sage-300: #8ca18d;
+  --color-sage-400: #738774;
+  --color-sage-500: #5c6c5c;
+  --color-sage-600: #495449;
+  --color-sage-700: #3c443c;
+  --color-sage-800: #313831;
+  --color-sage-900: #252a25;
 
-  --color-earth-50: #fbfbf5;
-  --color-earth-100: #e4e4e7;
-  --color-earth-200: #d4d4d8;
+  --color-earth-50: #faf6f0;
+  --color-earth-100: #f5ede3;
+  --color-earth-200: #eae3d9;
 
-  /* Semantic colors - light mode (cream/mint) */
-  --color-surface: #fbfbf5;
-  --color-surface-alt: #ffffff;
+  /* Semantic colors - light mode (cream/persimmon) */
+  --color-surface: #faf6f0;
+  --color-surface-alt: #f5ede3;
   --color-surface-elevated: #ffffff;
-  --color-text-primary: #000000;
-  --color-text-secondary: #52525b;
-  --color-text-muted: #a1a1aa;
-  --color-border: #e4e4e7;
-  --color-border-subtle: #f4f4f5;
+  --color-text-primary: #1e1b18;
+  --color-text-secondary: #6b655b;
+  --color-text-muted: #9e978c;
+  --color-border: #eae3d9;
+  --color-border-subtle: #f0eae0;
 
   /* Star rating */
-  --color-star: #f59e0b;
-  --color-star-empty: #d4d4d8;
+  --color-star: #e2583e;
+  --color-star-empty: #eae3d9;
 
   /* Danger */
   --color-danger-500: #ef4444;
@@ -79,16 +79,16 @@
    Dark Theme
    ============================================ */
 :root[data-theme="dark"] {
-  --color-surface: #000000;
-  --color-surface-alt: #0a0a0a;
-  --color-surface-elevated: #0a0a0a;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #a1a1aa;
-  --color-text-muted: #52525b;
-  --color-border: #1e2c31;
-  --color-border-subtle: #1e2c31;
+  --color-surface: #0e1b15;
+  --color-surface-alt: #08110d;
+  --color-surface-elevated: #162720;
+  --color-text-primary: #f5f2eb;
+  --color-text-secondary: #8ca18d;
+  --color-text-muted: #4e6356;
+  --color-border: #20342c;
+  --color-border-subtle: #162720;
 
-  --color-star-empty: #3f3f46;
+  --color-star-empty: #20342c;
 }
 
 /* ============================================
@@ -306,11 +306,11 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 2rem;
-  font-weight: 550;
+  font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
   color: #ffffff;
-  background: #000000;
+  background: var(--color-primary-500);
   border: none;
   border-radius: 9999px;
   cursor: pointer;
@@ -321,8 +321,8 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  background: #3f3f46;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+  background: var(--color-primary-600);
+  box-shadow: 0 10px 25px -5px rgba(226, 88, 62, 0.3);
 }
 
 .btn-primary:active {
@@ -330,13 +330,13 @@ body {
 }
 
 :root[data-theme="dark"] .btn-primary {
-  color: #000000;
-  background: #ffffff;
+  color: #ffffff;
+  background: var(--color-primary-500);
 }
 
 :root[data-theme="dark"] .btn-primary:hover {
-  background: #e4e4e7;
-  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1);
+  background: var(--color-primary-600);
+  box-shadow: 0 10px 25px -5px rgba(226, 88, 62, 0.5);
 }
 
 .btn-secondary {
@@ -345,29 +345,29 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 2rem;
-  font-weight: 550;
+  font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
-  color: #000000;
+  color: var(--color-text-primary);
   background: transparent;
-  border: 1.5px solid #000000;
+  border: 1.5px solid var(--color-text-primary);
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-secondary:hover {
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--color-border);
   transform: translateY(-2px);
 }
 
 :root[data-theme="dark"] .btn-secondary {
-  color: #ffffff;
-  border-color: #ffffff;
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
 }
 
 :root[data-theme="dark"] .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* ============================================
@@ -400,7 +400,10 @@ body {
    ============================================ */
 .input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   font-size: 0.875rem;
   color: var(--color-text-primary);
   background: var(--color-surface);

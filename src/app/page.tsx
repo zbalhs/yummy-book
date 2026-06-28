@@ -138,72 +138,36 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="page-enter">
+    <div className="page-enter bg-[var(--color-surface)] text-[var(--color-text-primary)]">
       {/* ===============================
           HERO SECTION
           =============================== */}
       <section
         id="hero-section"
-        className="relative min-h-screen flex items-center overflow-hidden"
+        className="relative min-h-[90vh] flex items-center overflow-hidden py-16 md:py-24 border-b border-[var(--color-border)]"
       >
-        {/* Animated background shapes */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div
-            className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-primary-200/30 rounded-full blur-3xl"
-            style={{
-              transform: `translate(${mousePos.x * -30}px, ${mousePos.y * -30}px)`,
-              transition: "transform 0.8s ease-out",
-            }}
-          />
-          <div
-            className="absolute top-1/2 -left-40 w-[500px] h-[500px] bg-accent-200/20 rounded-full blur-3xl"
-            style={{
-              transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 20}px)`,
-              transition: "transform 0.8s ease-out",
-            }}
-          />
-          <div
-            className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-warm-200/20 rounded-full blur-3xl"
-            style={{
-              transform: `translate(${mousePos.x * -15}px, ${mousePos.y * -15}px)`,
-              transition: "transform 0.8s ease-out",
-            }}
-          />
-
-          {/* Grid pattern overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `linear-gradient(var(--color-text-primary) 1px, transparent 1px),
-                               linear-gradient(90deg, var(--color-text-primary) 1px, transparent 1px)`,
-              backgroundSize: "60px 60px",
-            }}
-          />
-        </div>
-
-        <div className="container-app relative z-10 py-24 md:py-0">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Text */}
-            <div className="max-w-xl">
-              <div className="animate-fade-in-down inline-flex items-center gap-2 px-4 py-1.5 mb-6
-                            bg-primary-50 border border-primary-200 text-primary-700 text-xs font-semibold uppercase tracking-wider">
-                <Sparkles size={14} />
-                <span>Recipe Discovery Platform</span>
-              </div>
+        <div className="container-app relative z-10 w-full">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left - Text (7 cols) */}
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <span className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] text-[var(--color-primary-500)] uppercase mb-6 block">
+                YummyBook // The Culinary Journal
+              </span>
 
               <h1
-                className="animate-fade-in-up text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight mb-6"
-                style={{ fontFamily: "var(--font-playfair)" }}
+                className="text-5xl sm:text-6xl lg:text-7.5xl font-light leading-[1.05] tracking-tight mb-8 font-display"
               >
                 {t.landing.heroTitle}{" "}
-                <span className="gradient-text">{t.landing.heroHighlight}</span>
+                <span className="text-[var(--color-primary-500)] font-normal italic">
+                  {t.landing.heroHighlight}
+                </span>
               </h1>
 
-              <p className="animate-fade-in-up delay-200 text-lg text-[var(--color-text-secondary)] leading-relaxed mb-8 max-w-md opacity-0">
+              <p className="text-base sm:text-lg text-[var(--color-text-secondary)] leading-relaxed mb-8 max-w-lg font-sans">
                 {t.landing.heroSubtitle}
               </p>
 
-              <div className="animate-fade-in-up delay-400 flex flex-wrap gap-3 opacity-0">
+              <div className="flex flex-wrap gap-4 mb-12">
                 <Link href="/explore" className="btn-primary py-3.5 px-8 text-sm">
                   <span className="flex items-center gap-2">
                     {t.landing.heroCta}
@@ -215,18 +179,18 @@ export default function LandingPage() {
                 </Link>
               </div>
 
-              {/* Stats */}
-              <div className="animate-fade-in-up delay-600 flex items-center gap-8 mt-12 opacity-0">
+              {/* Editorial Stats Strip */}
+              <div className="pt-8 border-t border-[var(--color-border)] grid grid-cols-3 gap-6 max-w-md">
                 {[
                   { label: "Recipes", value: "10K+" },
                   { label: "Countries", value: "25+" },
-                  { label: "Users", value: "50K+" },
+                  { label: "Home Cooks", value: "50K+" },
                 ].map((stat) => (
-                  <div key={stat.label}>
-                    <div className="text-2xl font-bold text-[var(--color-text-primary)]">
+                  <div key={stat.label} className="text-left">
+                    <div className="text-2xl sm:text-3xl font-light font-display text-[var(--color-text-primary)]">
                       {stat.value}
                     </div>
-                    <div className="text-xs text-[var(--color-text-muted)] uppercase tracking-wider">
+                    <div className="text-[10px] text-[var(--color-text-secondary)] uppercase tracking-[0.15em] mt-1 font-semibold">
                       {stat.label}
                     </div>
                   </div>
@@ -234,138 +198,114 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Right - Food Grid */}
-            <div className="hidden lg:block relative">
-              <div className="relative animate-fade-in delay-300 opacity-0">
-                {/* Floating food cards */}
-                <div className="grid grid-cols-2 gap-4">
-                  {meals.slice(0, 4).map((meal, i) => (
-                    <div
-                      key={meal.idMeal}
-                      className={`relative overflow-hidden shadow-2xl group animate-fade-in-up opacity-0 ${
-                        i % 2 === 1 ? "mt-8" : ""
-                      }`}
-                      style={{
-                        animationDelay: `${400 + i * 150}ms`,
-                        transform: `translateY(${mousePos.y * (i % 2 === 0 ? -8 : 8)}px)`,
-                        transition: "transform 1s ease-out",
-                      }}
-                    >
-                      <div className="aspect-[3/4] relative">
-                        <Image
-                          src={meal.strMealThumb}
-                          alt={meal.strMeal}
-                          fill
-                          sizes="250px"
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <p className="text-white text-sm font-semibold line-clamp-2">
-                            {meal.strMeal}
-                          </p>
-                          <p className="text-white/70 text-xs mt-1">
-                            {meal.strArea || meal.strCategory}
-                          </p>
-                        </div>
+            {/* Right - Asymmetrical Editorial Artwork (5 cols) */}
+            <div className="lg:col-span-5 relative hidden lg:block">
+              {meals.length >= 2 && (
+                <div className="relative w-full h-[500px]">
+                  {/* Large Primary Cookbook Image */}
+                  <div className="absolute top-0 right-4 w-[280px] h-[380px] overflow-hidden shadow-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)]">
+                    <Image
+                      src={meals[0].strMealThumb}
+                      alt={meals[0].strMeal}
+                      fill
+                      sizes="300px"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+                      <span className="text-[9px] uppercase tracking-[0.2em] text-[var(--color-primary-200)] block mb-1">
+                        Featured Recipe
+                      </span>
+                      <h4 className="font-display font-light text-base leading-snug line-clamp-2">
+                        {meals[0].strMeal}
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* Overlapping Secondary Image */}
+                  <div className="absolute bottom-4 left-4 w-[220px] h-[280px] overflow-hidden shadow-2xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] z-20">
+                    <Image
+                      src={meals[1].strMealThumb}
+                      alt={meals[1].strMeal}
+                      fill
+                      sizes="250px"
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                      <span className="text-[8px] uppercase tracking-[0.2em] text-[var(--color-primary-200)] block mb-1">
+                        {meals[1].strArea} Cuisine
+                      </span>
+                      <h4 className="font-display font-light text-sm leading-snug line-clamp-2">
+                        {meals[1].strMeal}
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* Tactile Recipe Index Overlay Badge */}
+                  <div className="absolute top-1/2 left-0 -translate-y-1/2 z-30 bg-[var(--color-primary-500)] text-white px-4 py-3 shadow-lg border border-[var(--color-primary-600)]">
+                    <div className="flex items-center gap-2">
+                      <Star size={16} className="fill-white text-white animate-pulse" />
+                      <div>
+                        <p className="text-[10px] uppercase tracking-widest leading-none font-semibold">Community</p>
+                        <p className="text-sm font-bold mt-0.5 leading-none">4.9 / 5 Rating</p>
                       </div>
                     </div>
-                  ))}
-                </div>
-
-                {/* Floating accent card */}
-                <div
-                  className="absolute -bottom-6 -left-6 glass p-4 shadow-xl animate-bounce-in delay-800 opacity-0"
-                  style={{
-                    transform: `translateY(${mousePos.y * -12}px)`,
-                    transition: "transform 1s ease-out",
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center justify-center w-10 h-10 bg-primary-100 text-primary-600">
-                      <Globe size={20} />
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-[var(--color-text-primary)]">
-                        25+ Cuisines
-                      </p>
-                      <p className="text-xs text-[var(--color-text-muted)]">
-                        From around the world
-                      </p>
-                    </div>
                   </div>
                 </div>
-
-                {/* Rating float */}
-                <div
-                  className="absolute -top-4 -right-4 glass p-3 shadow-xl animate-bounce-in delay-600 opacity-0"
-                  style={{
-                    transform: `translateY(${mousePos.y * 10}px)`,
-                    transition: "transform 1s ease-out",
-                  }}
-                >
-                  <div className="flex items-center gap-2">
-                    <Star size={18} className="fill-amber-500 text-amber-500" />
-                    <span className="text-sm font-bold text-[var(--color-text-primary)]">4.9</span>
-                    <span className="text-xs text-[var(--color-text-muted)]">Rating</span>
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-          <div className="w-6 h-10 border-2 border-[var(--color-text-muted)] rounded-full flex items-start justify-center p-1.5">
-            <div className="w-1 h-2.5 bg-[var(--color-text-muted)] rounded-full animate-pulse-soft" />
           </div>
         </div>
       </section>
 
       {/* ===============================
-          FEATURES SECTION
+          FEATURES SECTION (Spruce Dark Canvas Track)
           =============================== */}
       <section
         id="features-section"
         ref={featuresRef.ref}
-        className="py-24 md:py-32 bg-[var(--color-surface-alt)]"
+        className="py-20 md:py-28 bg-[#0e1b15] text-[#f5f2eb] relative overflow-hidden"
       >
-        <div className="container-app">
-          <div className="text-center mb-16">
+        {/* Subtle decorative plant overlay background */}
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
+        
+        <div className="container-app relative z-10">
+          <div className="max-w-2xl mb-16">
+            <span className="text-[10px] font-semibold tracking-[0.2em] text-[var(--color-primary-300)] uppercase mb-4 block">
+              Core Experience
+            </span>
             <h2
-              className={`text-4xl md:text-5xl font-bold tracking-tight mb-4 transition-all duration-700 ${
+              className={`text-4xl md:text-5xl font-light tracking-tight font-display text-white transition-all duration-700 ${
                 featuresRef.visible ? "animate-fade-in-up" : "opacity-0"
               }`}
-              style={{ fontFamily: "var(--font-playfair)" }}
             >
               {t.landing.featuresTitle}{" "}
-              <span className="gradient-text">{t.landing.featuresSubtitle}</span>
+              <span className="text-[var(--color-primary-200)] font-normal italic">
+                {t.landing.featuresSubtitle}
+              </span>
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, i) => {
               const Icon = feature.icon;
               return (
                 <div
                   key={i}
-                  className={`card p-6 group cursor-default transition-all duration-700 ${
+                  className={`p-6 border border-[#20342c] bg-[#12241d] hover:border-[var(--color-primary-400)] transition-all duration-500 group ${
                     featuresRef.visible ? "animate-fade-in-up" : "opacity-0"
                   }`}
-                  style={{ animationDelay: `${i * 120}ms` }}
+                  style={{ animationDelay: `${i * 100}ms` }}
                 >
-                  <div
-                    className={`flex items-center justify-center w-12 h-12 mb-5
-                              bg-gradient-to-br ${feature.color} text-white
-                              transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
-                  >
-                    <Icon size={22} />
+                  <div className="w-10 h-10 mb-6 flex items-center justify-center text-[var(--color-primary-300)] group-hover:text-[var(--color-primary-400)] transition-colors duration-300">
+                    <Icon size={24} className="stroke-[1.5]" />
                   </div>
-                  <h3 className="text-base font-semibold text-[var(--color-text-primary)] mb-2">
+                  <h3 className="text-lg font-medium text-white mb-3 font-display">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed">
+                  <p className="text-sm text-[#8ca18d] leading-relaxed font-sans">
                     {feature.desc}
                   </p>
                 </div>
@@ -376,29 +316,33 @@ export default function LandingPage() {
       </section>
 
       {/* ===============================
-          CATEGORIES SECTION
+          CATEGORIES SECTION (Oatmeal Light Canvas Track)
           =============================== */}
       <section
         id="categories-section"
         ref={categoriesRef.ref}
-        className="py-24 md:py-32"
+        className="py-20 md:py-28 bg-[var(--color-surface)] border-b border-[var(--color-border)]"
       >
         <div className="container-app">
-          <div className="flex items-end justify-between mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
             <div>
+              <span className="text-[10px] font-semibold tracking-[0.25em] text-[var(--color-primary-500)] uppercase mb-4 block">
+                Explore Categories
+              </span>
               <h2
-                className={`text-4xl md:text-5xl font-bold tracking-tight mb-2 transition-all duration-700 ${
+                className={`text-4xl md:text-5xl font-light tracking-tight font-display transition-all duration-700 ${
                   categoriesRef.visible ? "animate-fade-in-up" : "opacity-0"
                 }`}
-                style={{ fontFamily: "var(--font-playfair)" }}
               >
                 {t.landing.categoriesTitle}{" "}
-                <span className="gradient-text">{t.landing.categoriesHighlight}</span>
+                <span className="text-[var(--color-primary-500)] font-normal italic">
+                  {t.landing.categoriesHighlight}
+                </span>
               </h2>
             </div>
             <Link
               href="/explore"
-              className={`hidden md:flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700 transition-all duration-300 ${
+              className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-primary-500)] hover:text-[var(--color-primary-600)] transition-all duration-300 ${
                 categoriesRef.visible ? "animate-fade-in" : "opacity-0"
               }`}
             >
@@ -406,12 +350,12 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
             {categories.map((cat, i) => (
               <Link
                 key={cat.idCategory}
                 href={`/explore?category=${cat.strCategory}`}
-                className={`relative group overflow-hidden aspect-[4/3] transition-all duration-700 ${
+                className={`relative group overflow-hidden aspect-[4/5] border border-[var(--color-border)] bg-[var(--color-surface-alt)] shadow-sm transition-all duration-700 ${
                   categoriesRef.visible ? "animate-fade-in-up" : "opacity-0"
                 }`}
                 style={{ animationDelay: `${i * 80}ms` }}
@@ -422,16 +366,16 @@ export default function LandingPage() {
                   alt={cat.strCategory}
                   fill
                   sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                <div className="absolute inset-0 bg-primary-600/0 group-hover:bg-primary-600/20 transition-colors duration-500" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="text-white text-sm md:text-base font-bold">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1e1b18]/80 via-[#1e1b18]/10 to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-[var(--color-primary-500)]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white z-10">
+                  <h3 className="text-base font-medium font-display leading-tight">
                     {cat.strCategory}
                   </h3>
-                  <p className="text-white/70 text-xs mt-0.5 line-clamp-1">
-                    {cat.strCategoryDescription.slice(0, 60)}...
+                  <p className="text-white/70 text-[10px] uppercase tracking-wider mt-1 line-clamp-1">
+                    {cat.strCategoryDescription.slice(0, 50)}...
                   </p>
                 </div>
               </Link>
@@ -441,59 +385,76 @@ export default function LandingPage() {
       </section>
 
       {/* ===============================
-          TRENDING RECIPES SECTION
+          TRENDING RECIPES SECTION (Warm Sand Contrast Canvas Track)
           =============================== */}
       <section
         id="popular-section"
         ref={popularRef.ref}
-        className="py-24 md:py-32 bg-[var(--color-surface-alt)]"
+        className="py-20 md:py-28 bg-[var(--color-surface-alt)] border-b border-[var(--color-border)]"
       >
         <div className="container-app">
-          <div className="flex items-center gap-2 mb-2">
-            <TrendingUp size={20} className="text-primary-600" />
-            <span className="text-sm font-semibold text-primary-600 uppercase tracking-wider">
-              Trending Now
-            </span>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
+            <div>
+              <span className="text-[10px] font-semibold tracking-[0.25em] text-[var(--color-primary-500)] uppercase mb-4 block">
+                Trending Kitchen Selections
+              </span>
+              <h2
+                className={`text-4xl md:text-5xl font-light tracking-tight font-display transition-all duration-700 ${
+                  popularRef.visible ? "animate-fade-in-up" : "opacity-0"
+                }`}
+              >
+                {t.landing.popularTitle}{" "}
+                <span className="text-[var(--color-primary-500)] font-normal italic">
+                  {t.landing.popularHighlight}
+                </span>
+              </h2>
+            </div>
+            <Link
+              href="/explore"
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-primary-500)]"
+            >
+              Explore Recipes <ArrowRight size={14} />
+            </Link>
           </div>
-          <h2
-            className={`text-4xl md:text-5xl font-bold tracking-tight mb-12 transition-all duration-700 ${
-              popularRef.visible ? "animate-fade-in-up" : "opacity-0"
-            }`}
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            {t.landing.popularTitle}{" "}
-            <span className="gradient-text">{t.landing.popularHighlight}</span>
-          </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {meals.slice(0, 8).map((meal, i) => (
               <Link
                 key={meal.idMeal}
                 href={`/recipe/${meal.idMeal}`}
-                className={`card group overflow-hidden transition-all duration-700 ${
+                className={`group overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-primary-500)] transition-all duration-500 ${
                   popularRef.visible ? "animate-fade-in-up" : "opacity-0"
                 }`}
                 style={{ animationDelay: `${i * 100}ms` }}
                 id={`trending-meal-${meal.idMeal}`}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-alt)] border-b border-[var(--color-border)]">
                   <Image
                     src={meal.strMealThumb}
                     alt={meal.strMeal}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="object-cover transition-transform duration-700 group-hover:scale-103"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
+                  <span className="absolute top-3 left-3 bg-white/90 text-[var(--color-text-primary)] text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 border border-[var(--color-border)]">
+                    {meal.strArea || "Global"}
+                  </span>
                 </div>
-                <div className="p-4">
-                  <h3 className="text-sm font-semibold text-[var(--color-text-primary)] line-clamp-2 mb-1
-                               group-hover:text-primary-600 transition-colors duration-300">
+                <div className="p-5">
+                  <span className="text-[9px] uppercase tracking-widest text-[var(--color-primary-500)] font-semibold block mb-1">
+                    {meal.strCategory || "Recipe"}
+                  </span>
+                  <h3 className="text-base font-medium font-display text-[var(--color-text-primary)] line-clamp-2 mb-2 leading-snug">
                     {meal.strMeal}
                   </h3>
-                  <div className="flex items-center gap-2 text-xs text-[var(--color-text-muted)]">
-                    <ChefHat size={12} />
-                    <span>{meal.strArea || meal.strCategory}</span>
+                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-[var(--color-border-subtle)] text-[10px] text-[var(--color-text-muted)] font-semibold uppercase tracking-wider">
+                    <span className="flex items-center gap-1.5">
+                      <ChefHat size={12} className="text-[var(--color-primary-500)]" />
+                      Easy Cook
+                    </span>
+                    <span className="text-[var(--color-primary-500)] flex items-center gap-0.5">
+                      Cook now <ArrowRight size={10} />
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -503,39 +464,33 @@ export default function LandingPage() {
       </section>
 
       {/* ===============================
-          CTA SECTION
+          CTA SECTION (Oatmeal Alabaster)
           =============================== */}
       <section
         id="cta-section"
         ref={ctaRef.ref}
-        className="py-24 md:py-32 relative overflow-hidden"
+        className="py-20 md:py-28 relative overflow-hidden bg-[var(--color-surface)]"
       >
-        {/* Background decoration */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-transparent to-accent-50 opacity-50" />
-          <div className="absolute top-20 right-20 w-72 h-72 bg-primary-200/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 left-20 w-72 h-72 bg-accent-200/20 rounded-full blur-3xl" />
-        </div>
-
         <div className="container-app relative z-10">
           <div
             className={`max-w-2xl mx-auto text-center transition-all duration-700 ${
               ctaRef.visible ? "animate-fade-in-up" : "opacity-0"
             }`}
           >
+            <span className="text-[10px] font-semibold tracking-[0.25em] text-[var(--color-primary-500)] uppercase mb-4 block">
+              Join Our Community
+            </span>
             <h2
-              className="text-4xl md:text-5xl font-bold tracking-tight mb-5"
-              style={{ fontFamily: "var(--font-playfair)" }}
+              className="text-4xl md:text-5xl font-light tracking-tight font-display mb-6 leading-tight"
             >
               {t.landing.ctaTitle}
             </h2>
-            <p className="text-lg text-[var(--color-text-secondary)] mb-8 max-w-md mx-auto">
+            <p className="text-base text-[var(--color-text-secondary)] mb-8 max-w-md mx-auto leading-relaxed font-sans">
               {t.landing.ctaSubtitle}
             </p>
             <Link
               href="/register"
-              className="btn-primary py-4 px-10 text-sm inline-flex"
+              className="btn-primary py-4 px-10 text-sm inline-flex items-center justify-center"
               id="cta-register"
             >
               <span className="flex items-center gap-2">
