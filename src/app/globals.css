@@ -13,38 +13,35 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
 
-  /* Fresh & Natural - Light Theme Colors */
+  /* Shopify Inspired - Aloe/Mint & Mono Palette */
   --color-primary-50: #f0fdf4;
   --color-primary-100: #dcfce7;
-  --color-primary-200: #bbf7d0;
-  --color-primary-300: #86efac;
-  --color-primary-400: #4ade80;
-  --color-primary-500: #22c55e;
-  --color-primary-600: #16a34a;
-  --color-primary-700: #15803d;
-  --color-primary-800: #166534;
-  --color-primary-900: #14532d;
+  --color-primary-200: #c1fbd4; /* Aloe-10 */
+  --color-primary-300: #d4f9e0; /* Pistachio-10 */
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981; /* Mint green */
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
 
-  --color-accent-50: #fff7ed;
-  --color-accent-100: #ffedd5;
-  --color-accent-200: #fed7aa;
-  --color-accent-300: #fdba74;
-  --color-accent-400: #fb923c;
-  --color-accent-500: #f97316;
-  --color-accent-600: #ea580c;
-  --color-accent-700: #c2410c;
+  --color-accent-50: #fbfbf5;  /* Canvas cream */
+  --color-accent-100: #f5f5f0;
+  --color-accent-200: #e4e4e7;
+  --color-accent-500: #00f5ff; /* Cyan accent */
+  --color-accent-600: #00d8e2;
 
-  --color-warm-50: #fefce8;
-  --color-warm-100: #fef9c3;
-  --color-warm-200: #fef08a;
-  --color-warm-300: #fde047;
+  --color-warm-50: #fbfbf5;
+  --color-warm-100: #d4f9e0;
+  --color-warm-200: #c1fbd4;
+  --color-warm-300: #10b981;
 
-  --color-cream-50: #fefdf8;
-  --color-cream-100: #fdf8e8;
-  --color-cream-200: #faf0d0;
-  --color-cream-300: #f5e4b0;
+  --color-cream-50: #fbfbf5;
+  --color-cream-100: #f4f4f0;
+  --color-cream-200: #e4e4e7;
+  --color-cream-300: #d4d4d8;
 
-  --color-sage-50: #f6f7f4;
+  --color-sage-50: #fbfbf5;
   --color-sage-100: #e8ebe3;
   --color-sage-200: #d4daca;
   --color-sage-300: #b5c0a8;
@@ -55,30 +52,23 @@
   --color-sage-800: #3f4a35;
   --color-sage-900: #363f2f;
 
-  --color-earth-50: #faf6f1;
-  --color-earth-100: #f0e8dc;
-  --color-earth-200: #e0cfb5;
-  --color-earth-300: #ccaf89;
-  --color-earth-400: #bc9467;
-  --color-earth-500: #b0804f;
-  --color-earth-600: #9c6a43;
-  --color-earth-700: #825339;
-  --color-earth-800: #6b4533;
-  --color-earth-900: #593b2d;
+  --color-earth-50: #fbfbf5;
+  --color-earth-100: #e4e4e7;
+  --color-earth-200: #d4d4d8;
 
-  /* Semantic colors */
-  --color-surface: #ffffff;
-  --color-surface-alt: #fafaf7;
+  /* Semantic colors - light mode (cream/mint) */
+  --color-surface: #fbfbf5;
+  --color-surface-alt: #ffffff;
   --color-surface-elevated: #ffffff;
-  --color-text-primary: #1a1a1a;
-  --color-text-secondary: #525252;
-  --color-text-muted: #a3a3a3;
-  --color-border: #e5e5e5;
-  --color-border-subtle: #f0f0f0;
+  --color-text-primary: #000000;
+  --color-text-secondary: #52525b;
+  --color-text-muted: #a1a1aa;
+  --color-border: #e4e4e7;
+  --color-border-subtle: #f4f4f5;
 
   /* Star rating */
   --color-star: #f59e0b;
-  --color-star-empty: #d4d4d4;
+  --color-star-empty: #d4d4d8;
 
   /* Danger */
   --color-danger-500: #ef4444;
@@ -89,16 +79,16 @@
    Dark Theme
    ============================================ */
 :root[data-theme="dark"] {
-  --color-surface: #0f1210;
-  --color-surface-alt: #161b17;
-  --color-surface-elevated: #1c231e;
-  --color-text-primary: #f0f4f1;
-  --color-text-secondary: #a3b5a8;
-  --color-text-muted: #5c6e60;
-  --color-border: #2a352d;
-  --color-border-subtle: #1f2821;
+  --color-surface: #000000;
+  --color-surface-alt: #0a0a0a;
+  --color-surface-elevated: #0a0a0a;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #52525b;
+  --color-border: #1e2c31;
+  --color-border-subtle: #1e2c31;
 
-  --color-star-empty: #3f4a35;
+  --color-star-empty: #3f3f46;
 }
 
 /* ============================================
@@ -119,6 +109,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss03";
 }
 
 ::selection {
@@ -315,43 +306,37 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 2rem;
-  font-weight: 600;
+  font-weight: 550;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
-  color: white;
-  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700));
+  color: #ffffff;
+  background: #000000;
   border: none;
+  border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
 
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-600));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.btn-primary:hover::before {
-  opacity: 1;
-}
-
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px -5px rgba(22, 163, 74, 0.4);
+  background: #3f3f46;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
 }
 
 .btn-primary:active {
   transform: translateY(0);
 }
 
-.btn-primary span {
-  position: relative;
-  z-index: 1;
+:root[data-theme="dark"] .btn-primary {
+  color: #000000;
+  background: #ffffff;
+}
+
+:root[data-theme="dark"] .btn-primary:hover {
+  background: #e4e4e7;
+  box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.1);
 }
 
 .btn-secondary {
@@ -360,29 +345,29 @@ body {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 2rem;
-  font-weight: 600;
+  font-weight: 550;
   font-size: 0.875rem;
   letter-spacing: 0.025em;
-  color: var(--color-primary-700);
+  color: #000000;
   background: transparent;
-  border: 2px solid var(--color-primary-600);
+  border: 1.5px solid #000000;
+  border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-secondary:hover {
-  background: var(--color-primary-50);
+  background: rgba(0, 0, 0, 0.04);
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px -3px rgba(22, 163, 74, 0.2);
 }
 
 :root[data-theme="dark"] .btn-secondary {
-  color: var(--color-primary-400);
-  border-color: var(--color-primary-500);
+  color: #ffffff;
+  border-color: #ffffff;
 }
 
 :root[data-theme="dark"] .btn-secondary:hover {
-  background: rgba(34, 197, 94, 0.1);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 /* ============================================
