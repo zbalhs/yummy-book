@@ -1,0 +1,107 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Profile {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  username  String?  @unique
+  fullName  String?
+  avatarUrl String?
+  bio       String?
+  locale    String   @default("en")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  favorites Favorite[]
+  recipes   Recipe[]
+  reviews   Review[]
+  mealPlans MealPlan[]
+}
+
+model Recipe {
+  id           String   @id @default(uuid())
+  title        String
+  instructions String   @db.Text
+  category     String?
+  area         String?
+  imageUrl     String?
+  videoUrl     String?
+  source       String?
+  externalId   String?
+  authorId     String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  author        Profile?       @relation(fields: [authorId], references: [id])
+  ingredients   Ingredient[]
+  favorites     Favorite[]
+  reviews       Review[]
+  mealPlanItems MealPlanItem[]
+}
+
+model Ingredient {
+  id       String  @id @default(uuid())
+  name     String
+  measure  String?
+  recipeId String
+
+  recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+}
+
+model Favorite {
+  id        String   @id @default(uuid())
+  userId    String
+  recipeId  String
+  createdAt DateTime @default(now())
+
+  user   Profile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, recipeId])
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  rating    Int
+  comment   String?  @db.Text
+  photoUrl  String?
+  userId    String
+  recipeId  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user   Profile @relation(fields: [userId], references: [id], onDelete: Cascade)
+  recipe Recipe  @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+}
+
+model MealPlan {
+  id        String   @id @default(uuid())
+  userId    String
+  weekStart DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user  Profile       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items MealPlanItem[]
+
+  @@unique([userId, weekStart])
+}
+
+model MealPlanItem {
+  id         String @id @default(uuid())
+  mealPlanId String
+  recipeId   String
+  dayOfWeek  Int
+  mealType   String
+  position   Int    @default(0)
+
+  mealPlan MealPlan @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  recipe   Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@unique([mealPlanId, dayOfWeek, mealType, position])
+}
